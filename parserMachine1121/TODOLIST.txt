@@ -1,0 +1,20 @@
+这里全部是需要在未来填好的坑
+
+GIT 大法好！
+
+selfDefinitionOperator:
+	1.暂时不能解决多重变量定义问题：a=1,b=a;
+	2.用户计算含有自定义函数的表达式时，必须检查函数参数是否匹配
+
+parseMachine:
+	关键的几个集合：	
+			map<string, int> base_ops	
+			map<string, int> self_define_ops{};
+			map<string, moon::selfDefinitionOperator> hash_self_define_ops{};
+			map<string, moon::selfDefinitionOperator> hash_self_define_variables{};
+
+	1.需要在传入参数之前，先把命令过滤一次。如 绘图、线性拟合等命令
+	2.caller确认文本是pure expression后，在调用计算函数得到结果
+				如果不是p e,则更新相关的变量、函数列表
+	3.暂不支持处理pure exression中的空白符
+	4.目前支持的标识符最大长度为6：变量或函数的名字不能超过6
