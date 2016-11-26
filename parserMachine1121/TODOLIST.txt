@@ -8,8 +8,7 @@ selfDefinitionOperator:
 
 parseMachine:
 	关键的几个集合：	
-			map<string, int> base_ops	
-			map<string, int> self_define_ops{};
+			map<string, int> base_ops
 			map<string, moon::selfDefinitionOperator> hash_self_define_ops{};
 			map<string, moon::selfDefinitionOperator> hash_self_define_variables{};
 
@@ -18,3 +17,4 @@ parseMachine:
 				如果不是p e,则更新相关的变量、函数列表
 	3.暂不支持处理pure exression中的空白符
 	4.目前支持的标识符最大长度为6：变量或函数的名字不能超过6
+	5.暂不支持嵌套定义自定义函数：f(x)=2+x, g(x)=f(x)+4

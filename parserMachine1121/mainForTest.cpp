@@ -4,14 +4,17 @@
 #include<string>
 #include<vector>
 int main() {
+	cout << " 0-function_definition 1-variable_definition 2-pure_expression 3-commands\n";
 	string text("1+2");
 	while (true) {
 		text.clear();
 		cin >> text;
 		moon::parseMachine tem(text);
-		tem.parse_to_units();
-		tem.show_text();
-		cout << endl;
+		auto result=tem.getResult();
+		if (result != moon::invalid_value)
+			cout <<"result= "<< result << endl;
+		//tem.show_text();
+
 	}
 
 	//moon::selfDefinitionOperator op("f(x)=1+2");

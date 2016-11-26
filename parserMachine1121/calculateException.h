@@ -29,4 +29,9 @@ namespace moon {
 	public:
 		arc_range() :exception("反三角函数参数绝对值不能超过1！") {}
 	};
+
+	class undefined_str :public exception {
+	public:
+		undefined_str() :exception("未定义的符号！") {}
+	};
 }

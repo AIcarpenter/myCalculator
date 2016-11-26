@@ -4,7 +4,8 @@
 #include<algorithm>
 #include<iostream>
 #include<string>
-#include<map>
+#include<unordered_map>
+
 #include<vector>
 using namespace std;
 
@@ -34,7 +35,7 @@ namespace moon {
 		string syntax;
 		string expression;
 		size_t argc;
-		map<string, value_type> argv;
+		unordered_map<string, value_type> argv;
 	public:
 		selfDefinitionOperator(){}
 		selfDefinitionOperator(string text) {
@@ -80,9 +81,21 @@ namespace moon {
 
 			}
 		}
-		value_type do_mathmatics(vector<value_type> values) {
+		string full_text(vector<value_type> values) {
+		//return full enplaced expression;
+			auto tem_expression = expression;
+			for (auto &entry : argv) {
+				entry.second = values.front();
+				values.erase(values.begin());
+				while (tem_expression.find(entry.first) != string::npos) {
+					tem_expression.replace(tem_expression.find(entry.first), entry.first.length(), std::to_string(entry.second));
+				}
+			}
+			return tem_expression;
 		}
+		size_t get_argc() { return argc; }
 		string getSyntax() { return syntax; }
+		string getExpression() { return expression; }
 		defineType getType() {
 			return tag;
 		}
